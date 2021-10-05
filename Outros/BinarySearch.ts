@@ -35,50 +35,51 @@ class BinarySearchTree {
     return twig;
   }
 
-  getHeight(root: Twig) {
-    let leftHeight = 0;
-    let leftTree = root.left;
-    let rightHeight = 0;
-    let rightTree = root.right;
-    let height = 0;
-    let countTrees = 0;
+  getHeight(twig: Twig | null) {
+    let left = 0;
+    let right = 0;
 
-    while (leftTree !== null) {
-      leftHeight++;
-
-      if (leftTree) {
-        countTrees = this.getHeight(leftTree);
-        countTrees += leftHeight;
-        height = height < countTrees ? countTrees : height;
-      }
-
-      leftTree = leftTree.left;
+    if (twig?.left) {
+      left++;
+      left += this.getHeight(twig.left);
     }
 
-    while (rightTree !== null) {
-      rightHeight++;
-
-      if (rightTree) {
-        countTrees = this.getHeight(rightTree);
-        countTrees += rightHeight;
-        height = height < countTrees ? countTrees : height;
-      }
-
-      rightTree = rightTree.right;
+    if (twig?.right) {
+      right++;
+      right += this.getHeight(twig.right);
     }
-    height = height > rightHeight ? height : rightHeight;
 
-    return leftHeight > height ? leftHeight : height;
+    return left > right ? left : right;
   }
 }
+
+// Testes
 
 let tree = new BinarySearchTree();
 let twig = null;
 
-var values: number[] = [3, 5, 2, 1, 4, 6, 7];
+const value1: number[] = [3, 5, 2, 1, 4, 6, 7]; // expect to be 3
+const value2: number[] = [20, 50, 35, 44, 9, 15, 62, 11, 13]; // expect to be 4
+const value3: number[] = [25, 39, 12, 19, 9, 23, 55, 31, 60, 35, 41, 70, 90]; // expect to be 5
 
-for (let i = 0; i < values.length; i++) {
-  twig = tree.insert(twig, values[i]);
+for (let i = 0; i < value1.length; i++) {
+  twig = tree.insert(twig, value1[i]);
 }
 
-twig && console.log(tree.getHeight(twig));
+twig && console.log("expect to be 3, received =", tree.getHeight(twig));
+
+twig = null;
+
+for (let i = 0; i < value2.length; i++) {
+  twig = tree.insert(twig, value2[i]);
+}
+
+twig && console.log("expect to be 4, received =", tree.getHeight(twig));
+
+twig = null;
+
+for (let i = 0; i < value3.length; i++) {
+  twig = tree.insert(twig, value3[i]);
+}
+
+twig && console.log("expect to be 5, received =", tree.getHeight(twig));
