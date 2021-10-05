@@ -58,28 +58,37 @@ class BinarySearchTree {
 let tree = new BinarySearchTree();
 let twig = null;
 
-const value1: number[] = [3, 5, 2, 1, 4, 6, 7]; // expect to be 3
-const value2: number[] = [20, 50, 35, 44, 9, 15, 62, 11, 13]; // expect to be 4
-const value3: number[] = [25, 39, 12, 19, 9, 23, 55, 31, 60, 35, 41, 70, 90]; // expect to be 5
+const getHeight1: number[] = [3, 5, 2, 1, 4, 6, 7]; // expect to be 3
+const getHeight2: number[] = [20, 50, 35, 44, 9, 15, 62, 11, 13]; // expect to be 4
+const getHeight3: number[] = [
+  25, 39, 12, 19, 9, 23, 55, 31, 60, 35, 41, 70, 90,
+]; // expect to be 5
 
-for (let i = 0; i < value1.length; i++) {
-  twig = tree.insert(twig, value1[i]);
+interface GetHeightTest {
+  expect: number;
+  data: number[];
 }
+const getHeight: GetHeightTest[] = [
+  {
+    expect: 3,
+    data: [3, 5, 2, 1, 4, 6, 7],
+  },
+  {
+    expect: 4,
+    data: [20, 50, 35, 44, 9, 15, 62, 11, 13],
+  },
+  {
+    expect: 5,
+    data: [25, 39, 12, 19, 9, 23, 55, 31, 60, 35, 41, 70, 90],
+  },
+];
 
-twig && console.log("expect to be 3, received =", tree.getHeight(twig));
+for (let test of getHeight) {
+  for (let i = 0; i < test.data.length; i++) {
+    twig = tree.insert(twig, test.data[i]);
+  }
 
-twig = null;
+  console.log(`expect to be ${test.expect}, received =`, tree.getHeight(twig));
 
-for (let i = 0; i < value2.length; i++) {
-  twig = tree.insert(twig, value2[i]);
+  twig = null;
 }
-
-twig && console.log("expect to be 4, received =", tree.getHeight(twig));
-
-twig = null;
-
-for (let i = 0; i < value3.length; i++) {
-  twig = tree.insert(twig, value3[i]);
-}
-
-twig && console.log("expect to be 5, received =", tree.getHeight(twig));
