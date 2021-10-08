@@ -21,3 +21,42 @@ console.log(Array(3).fill(4)); // // Cria um novo array vazio com 3 tres posiç�
 
 console.log("\n");
 //console.log(algunsNumerosRepetidos.at(-1)); não funciona no typescript
+
+const frutas: string[] = [
+  "Abacaxi",
+  "Banana",
+  "Carambola",
+  "Damasco",
+  "Embaúba",
+  "Figo",
+  "Goiaba",
+  "Heisteria",
+  "Ingá",
+  "Jabuticaba",
+  "Kino",
+  "Laranja",
+  "Maçã",
+  "Noz",
+  "Oiti",
+  "Pera",
+  "Quiuí",
+  "Romã",
+  "Sapucaia",
+  "Tangerina",
+  "Uva",
+  "Vacínio",
+  "Wampi",
+  "Xixá",
+  "Yamamomo",
+  "Zimbro",
+];
+
+// Entrega o indice
+for (let indice in frutas) {
+  console.log(indice);
+}
+
+//Entrega o elemento
+for (let fruta of frutas) {
+  console.log(fruta);
+}
