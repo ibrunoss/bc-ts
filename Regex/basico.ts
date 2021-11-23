@@ -14,8 +14,12 @@ const teste7 = "Oloco";
 const teste8 = "Dr. Bruno";
 const teste9 = "Sra. Nivalda";
 const teste10 = "Sra. Nivalda 1";
+const teste11 = "Dr. Bruno 1";
+const teste12 = "Sra. Nivalda 23";
+const teste13 = "Dr. Bruno 23";
 
 const peloMenosUmNumero = /(?=.*?[0-9])/;
+const peloMenosDoisNumero = /(?=.*?[0-9]{2,})/;
 
 console.log("Só letras maiusculas");
 console.log(teste1, soLetrasMaiusculas.test(teste1));
@@ -51,6 +55,18 @@ console.log(teste9, iniciaComFormalidade.test(teste9));
 console.log("\n\n");
 
 console.log("Pelo menos um numero");
+console.log(teste8, peloMenosUmNumero.test(teste8));
 console.log(teste9, peloMenosUmNumero.test(teste9));
 console.log(teste10, peloMenosUmNumero.test(teste10));
+console.log(teste11, peloMenosUmNumero.test(teste11));
+console.log(teste12, peloMenosUmNumero.test(teste12));
+console.log(teste13, peloMenosUmNumero.test(teste13));
 console.log("\n\n");
+
+console.log("Pelo menos dois numero");
+console.log(teste8, peloMenosDoisNumero.test(teste8));
+console.log(teste9, peloMenosDoisNumero.test(teste9));
+console.log(teste10, peloMenosDoisNumero.test(teste10));
+console.log(teste11, peloMenosDoisNumero.test(teste11));
+console.log(teste12, peloMenosDoisNumero.test(teste12));
+console.log(teste13, peloMenosDoisNumero.test(teste13));
