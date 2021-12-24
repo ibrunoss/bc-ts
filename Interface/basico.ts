@@ -7,6 +7,10 @@ interface Humano2 {
   [prop: string]: any;
 }
 
+interface TipoGenerico<T> {
+  idade: T;
+}
+
 function saudarComOla(pessoa: Humano) {
   console.log(`Ola ${pessoa.nome}`);
 }
@@ -19,6 +23,9 @@ function mudarNome(pessoa: Humano) {
   pessoa.nome = "Da Silva";
 }
 
+function idade<T>(obj: TipoGenerico<T>) {
+  console.log(typeof obj.idade);
+}
 const eu = {
   nome: "Bruno",
   idade: 32,
@@ -29,3 +36,5 @@ saudarComOla2({ nome: "Bruno", idade: 32 });
 saudarComOla(eu);
 mudarNome(eu);
 saudarComOla(eu);
+idade<string>({ idade: "32" });
+idade<number>({ idade: 32 });
